@@ -1,49 +1,227 @@
 <!DOCTYPE html> 
 <html> 
-<!--Password Cracking-->
-<div class = 'button'>
-<input type="text" id="password" />
-<button onclick="hacker()"></button>
-<p id="results"> </p>
-</div>
-<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
-<script type="text/javascript">
-    function main() {
- $('.button').hide();
- $('.button').fadeIn(1000);
-}
- $(document).ready(main);
-</script>
-<script type="text/javascript">
- var alphabet= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()+=,./:;? ';
- var letterNumber = 0;
- var charNumber = 0;
- var hackedPassword = ''
- function hacker(){
-    var password=document.getElementById('password').value;
-    var length = password.length;
+<!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+ 
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+ 
+ 
+Authors in chronological order of contribution:
+Tim Riedel
+Daelon Morais
+ 
+Further Information:
+http://diystream.cns.utexas.edu/
 
-    if (password[letterNumber]==alphabet[charNumber]){
-    	console.log(alphabet[charNumber]);
-    	hackedPassword +=alphabet[charNumber];
-    	letterNumber++;
-    	charNumber = 0;
-    	if (letterNumber==length) {
-    		console.log('The password is: '+ hackedPassword);
-    		var resultText = document.getElementById("results");
-    		resultText.innerHTML = 'The password is: '+ hackedPassword;
-    		letterNumber = 0;
-    		charNumber = 0;
-    		hackedPassword = '';
-    		document.getElementById('password').value = '';
-    	} else {
-    		hacker();
-    	}
-    } else {
-    	charNumber++;
-    	hacker();
-    }
-}
-</script>
+Research Educator:
+Timothy Riedel
+triedel@utexas.edu
+ 
+Brief Description of Goal of Code:
+To create an app to diagnose a medical problem according to symptoms
+ 
+Known Issues:
+None
+-->
+
+   <head> 
+   	<!--this is the header section and the title of the webpage-->
+      <title>Diagnostic App</title>  
+      <!--this is important information that is not to be seen on the page
+		It will scale everything to a reasonable size
+		It will also allow the page to be saved as a shortcut on smartphones-->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <!--this links to a file containing CSS formatting provided by jQuery-->
+      
+      <!--these tags allow Javasript to be exxecuted-->
+      <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      
+      <!-- the following link sets the icon image that will be placed on a device home screen if the user makes a shortcut-->
+      <link rel="apple-touch-icon" href="/custom_icon.png">
+      <script>
+		// The following code lets you know when the file was last modified. 
+        // This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
+        var docMod = document.lastModified;
+        alert("This file last modified  " + docMod);
+        console.log("This file last modified  " + docMod);
+        // If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
+	 
+      	//this resets the number of clicks on bronchitis or asthmanswer to zero everytime the page is reloaded
+		var bronch_count = 0; 
+		var asthma_count = 0;
+		//this function adds every click that contributes to bronchitis probability
+		function bronchAdd(){
+			bronch_count = bronch_count + 1;
+		}
+		//this function counts the clicks on buttons that contribute to the probability that the user has asthma
+		function asthmaAdd(){
+			asthma_count = asthma_count + 1; }
+      
+      	//this resets the probability of an bronchitis or asthma to zero everytime the page is reloaded
+		var bronchProb = 0; var asthmaProb = 0;
+		//this function calculates the probability that the user either has bronchitis or asthma
+		function resultsCalc(){
+		//this calculates the percentage by calculating the proportion of clicks on asthma or bronchitis answers out of total answers so that more question can be added without having to rewrite the program to accomodate more answers
+			bronchPercent = Math.round(bronch_count/(asthma_count+bronch_count)*10000)/100
+			asthmaPercent = Math.round(asthma_count/(asthma_count+bronch_count)*10000)/100
+		//this retrieve the paragraph text on the results page and replaces it with the variable resultText
+			var resultText = document.getElementById("results");
+		//This rewrite the html with the results statement with variables embeded within
+			resultText.innerHTML = "Probability it is bronchitis =" + bronchPercent +  "% <br> Probability it is asthma =" + asthmaPercent + "%";
+		}
+
+		//This function refreshes the page to restart the preceeding functions so that the quiz can be restarted
+		function refresh(){
+			location.reload(true);
+		}
+ 	</script>
+      <style>
+      	/*Image formatting*/
+      	img, object{max-width:90%;
+	      		max-height:90%};	
+      </style>
+      
+   </head>
+	
+	<body>  
+	
+<!-- Start of Page 1/Home Page -->
+	<div data-role="page" id="page1"> <!--new page identified as page1-->
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Acute Bronchitis or Asthma Diagnostic </h1> <!-- the name of this page is Bronchitis Diagnostic -->
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p>Do you think you may have <b>acute bronchitis</b> or <b>asthma</b>? <br> Take this quick and easy diagnostic quiz to find <i>out</i>!</p><!--text contains bolded and italicized portions --> 
+				<center> <!--centers image-->
+					<img src="http://media.istockphoto.com/illustrations/lungs-showing-trachea-bronchial-tree-illustration-id187166583?k=6&m=187166583&s=170667a&w=0&h=Y9s93kDB_J-TiKhhRZtYzQKMVTjsS1aKLjNByu-M4hk=" 
+		     		/> <!--inserted image of bronchitis-->
+		     		</center>
+				<a href="#page2" class="ui-btn"> Go to Quiz!</a> <!--link to next page which begins the quiz -->
+		</div><!-- /content -->
+		
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4> <!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 1 -->
+
+<!-- Start of Page 2/Question 1 -->
+	<div data-role="page" id="page2"><!--new page identified as page2-->
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Question 1</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p> Do you have a fever?</p> <!--first question -->
+				<a href="#page3" onclick="bronchAdd();" data-role="button"> Yes</a> <!--if clicked calls the bronchAdd function and adds a value to bronchitis count -->
+				<a href="#page3" onclick="asthmaAdd();" data-role="button">No</a> <!--if clicked calls the asthmaAdd function and adds a value to asthma count -->
+				
+					<img src="http://farm1.staticflickr.com/89/212703006_cb1fc0dd0d.jpg" 
+		     		alt="Picture of a thermometer at 100.4 Farenheit."/> <!--inserted image of thermometer-->
+		     	
+			<p><a href="#page1" onclick="refresh();" data-role="button"> Home</a></p> <!--restarts quiz by going to first page and calls function refresh which resets the probabilities-->
+		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4><!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 2-->
+
+<!-- Start of Page 3/Question 2 -->
+	<div data-role="page" id="page3"><!--new page identified as page3-->
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Question 2</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p> Are your symptoms exacerbated by the environment, like pollen or dust, or by exercise?</p><!--second question -->
+				<a href="#page4" onclick="asthmaAdd();" data-role="button"> Yes</a> <!--if clicked calls the asthmaAdd function and adds a value to bronchitis count -->
+				<a href="#page4" onclick="bronchAdd();" data-role="button">No</a> <!--if clicked calls the bronchAdd function and adds a value to asthma count -->
+				
+					<img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Misc_pollen.jpg" 
+		     			alt="Picture of microscopic allergens/irritants"/> <!--inserted image of microscopic allergens/irritants-->
+		     	
+			<p><a href="#page1" onclick="refresh();" data-role="button"> Home</a></p> <!--restarts quiz by going to first page and calls function refresh which resets the probabilities-->
+		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4><!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 3-->	   
+
+<!-- Start of Page 4/Question 3 -->
+	<div data-role="page" id="page4"><!--new page identified as page4-->
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Question 3</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p> Have you coughed up phlegm (clear, yellow, or green mucus)</p><!--third question -->
+				<a href="#page5" onclick="bronchAdd();" data-role="button"> Yes</a> <!--if clicked calls the bronchAdd function and adds a value to bronch count -->
+				<a href="#page5" onclick="asthmaAdd();" data-role="button">No</a> <!--if clicked calls the asthmaAdd function and adds a value to asthma count -->
+				<center>
+					<img src="http://mucuscolor.com/wp-content/uploads/2013/06/mucus-color.jpg" 
+		     			alt="Picture of mucus"/> <!--inserted image of mucus-->
+		     	</center>
+			<p><a href="#page1" onclick="refresh();" data-role="button"> Home</a></p> <!--restarts quiz by going to first page and calls function refresh which resets the probabilities-->
+		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4><!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 4-->	
+
+<!-- Start of Page 5/Question 4 -->
+	<div data-role="page" id="page5"><!--new page identified as page5-->
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Question 4</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p> Have your symptoms lasted a few days/weeks or are they chronic?</p><!--fourth question -->
+				<a href="#page6" onclick="bronchAdd();" data-role="button"> Few Days/Weeks</a> <!--if clicked calls the bronchAdd function and adds a value to bronch count -->
+				<a href="#page6" onclick="asthmaAdd();" data-role="button">Chronic</a> <!--if clicked calls the asthmaAdd function and adds a value to asthma count -->
+			<p><a href="#page1" onclick="refresh();" data-role="button"> Home</a></p> <!--restarts quiz by going to first page and calls function refresh which resets the probabilities-->
+		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4><!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 5-->
+
+<!-- Start of Page 6/Results -->
+	<div data-role="page" id="page6">
+		<center> <!--Centers content of page-->
+		<div data-role="header">
+			<h1>Results </h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+			<p id="results"> </p> <!-- replaceable text identified as results-->
+ 				<a  onclick="resultsCalc();" data-role="button">Click to View Results</a> <!-- when the buttons is clicked the function scripted above results calc is called which replaces the text above-->
+      
+    	
+    		<p><a href="#page1" onclick="refresh();" data-role="button"> Home</a></p> <!--restarts quiz by going to first page and calls function refresh which resets the probabilities-->
+    		<br>
+    		<br>
+    		<p><a href="https://daelon-morais.github.io/App3-coldorallergy/" data-role="button">Try Cold or Allergy Diagnostic Quiz</a></p>
+  		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<h4 style="color:rgb(165, 224, 44);">DIY Diagnostics</h4><!--green footer-->
+		</div><!-- /footer -->
+		</center> <!--Centers content of page-->
+	</div><!-- /page 6-->	   	   
+	</body>
 </html>
-
