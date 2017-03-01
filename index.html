@@ -75,6 +75,10 @@ None
 		function refresh(){
 			location.reload(true);
 		}
+	      	$('.fever').hide();
+	      	function feverDef(){
+			$('.projects').toggle();
+		}
  	</script>
       <style>
       	/*Image formatting*/
@@ -116,7 +120,8 @@ None
 		</div><!-- /header -->
 
 		<div role="main" class="ui-content">
-			<p> Do you have a fever?</p> <!--first question -->
+			<p> Do you have a <a onclick="feverDef();"><b>fever</b></a>?</p> <!--first question -->
+			<div class='fever'> <p>A fever constitutes a temperature of 100.4 or higher</p></div> 
 				<a href="#page3" onclick="bronchAdd();" data-role="button"> Yes</a> <!--if clicked calls the bronchAdd function and adds a value to bronchitis count -->
 				<a href="#page3" onclick="asthmaAdd();" data-role="button">No</a> <!--if clicked calls the asthmaAdd function and adds a value to asthma count -->
 				
