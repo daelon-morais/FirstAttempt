@@ -40,6 +40,7 @@ None
       <!-- the following link sets the icon image that will be placed on a device home screen if the user makes a shortcut-->
       <link rel="apple-touch-icon" href="/custom_icon.png">
       <script>
+	      $('.fever').hide();
 		// The following code lets you know when the file was last modified. 
         // This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
         var docMod = document.lastModified;
@@ -75,7 +76,7 @@ None
 		function refresh(){
 			location.reload(true);
 		}
-	      	$('.fever').hide();
+	      	
 	      	function feverDef(){
 			$('.fever').toggle();
 		}
