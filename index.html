@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title></title>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <script type="text/javascript" src="script.js"></script>
-	</head>
-	<body>
-        <div></div>   
-	</body>
-
+    </head>
+    <body>
+        <div id="red"></div>
+        <div id="blue"></div>
+        <div id="yellow"></div>
+        <div id="green"></div>
+    </body>
 <style>
 div {
     height:100px;
     width:100px;
+    display: inline-block;
+}
+
+#red {
     background-color:#FF0000;
-    border-radius:5px;
+}
+
+#blue {
+    background-color:#0000FF;
+}
+
+#yellow {
+    background-color:#E2BE22;
+}
+
+#green {
+    background-color:#008800;
 }
 </style>
 <script>
 $(document).ready(function() {
-    $( ).fadeOut(1000);
+   $('div').mouseenter(function() {
+       $(this).animate({
+           height: '+=10px'
+       });
+   });
+   $('div').mouseleave(function() {
+       $(this).animate({
+           height: '-=10px'
+       }); 
+   });
+   $('div').click(function() {
+       $(this).toggle(1000);
+   }); 
 });
 </script>
 </html>
