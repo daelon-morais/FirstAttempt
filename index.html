@@ -3,22 +3,190 @@
     <head>
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
         <script type="text/javascript" src="script.js"></script>
+         <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
     </head>
-    <body>
-        <div id="red"></div>
-        <div id="blue"></div>
-        <div id="yellow"></div>
-        <div id="green"></div>
+
+        <h1 style="color:rgb(165, 224, 44);"><center><b> Happy Birthday Mama!!!</center></b></h1>
+            <div class="poem">
+            <p style="white" > 
+                    <center style="white">
+                They say April showers bring May flowers <br>
+                <img src="http://blog.swagbucks.com/wp-content/uploads/2014/04/flat550x550075f.jpg" alt="April Showers">
+                
+                But what else can April bring? <br>
+                April showers bring rainbows <br>
+                Vibrant life and color for Spring <br>
+                April brings Easter, Holi, and quite a lot <br>
+                But what else has April brought? <br>
+                Years ago, on April 9th in fact <br>
+                April brought you <br>
+                And years ahead <br>
+                Today, instead <br>
+                We celebrate this too <br>
+            </div>
+                <div class="poem1">
+                Like Easter and Holi this is cause for joy <br>
+                Celebration and cheer <br>
+                <img src="http://www.skytop.com/wp-content/uploads/2017/01/Easter.jpg">
+                A time to celebrate everything you've done <br>
+                During the past year <br>
+            </div>
+            <div class="poem2">
+                Even April showers can't bring the colors <br>
+                That you bring to our day <br>
+                So April brings and April brought <br>
+                A Happy Birthday!<br>
+                <img src="https://s-media-cache-ak0.pinimg.com/736x/9e/40/f5/9e40f5996f75128d524a43762dc944b7.jpg" height ="250px">
+            </center>
+            </p>
+        </div>
+<style type="text/css">
+.poem
+{
+    text-align: center;
+    font-weight:bold;
+    color: white;
+}
+.poem1
+{
+    text-align: center;
+    font-weight:bold;
+    color: white;
+}
+.poem2
+{
+    text-align: center;
+    font-weight:bold;
+    color: white;
+}
+.poem img { position: absolute; left: 310px; top: 50px; height:100px }
+.poem1 img { position: absolute; left: 830px; top: 260px; height:100px }
+</style>
+
+    <body style="background-color: rgb(0, 0, 0);">
+    	
+    	<center>
+
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="red"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="orange"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="yellow"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="green"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="blue"></div>
+        	<div id="purple"></div>
+        	<div id="purple"></div>
+       		<div id="purple"></div>
+       		<div id="purple"></div>
+        	<div id="purple"></div>
+       		<div id="purple"></div>
+       		<div id="purple"></div>
+        	<div id="purple"></div>
+       		<div id="purple"></div>
+       		<div id="purple"></div>
+        	<div id="purple"></div>
+       		<div id="purple"></div>
+       		<div id="white"></div>
+    	</center>
+    	
     </body>
+	
+
+<script>
+$(document).ready(function() {
+   $('#red,#orange, #yellow, #green, #blue, #purple').mouseenter(function() {
+       $(this).animate({
+           height: '+=530px'
+       }, 300);
+   });
+   $('#red,#orange, #yellow, #green, #blue, #purple').mouseleave(function() {
+       $(this).animate({
+           height: '-=530px'
+       }); 
+   });
+   $('#red,#orange, #yellow, #green, #blue, #purple').click(function() {
+       $(this).hide(1000);
+   }); 
+});
+
+$(document).ready(function() {
+    $('#red,#orange, #yellow, #green, #blue, #purple').mouseenter(function() {
+        $(this).fadeTo(100, 1);
+    });
+    $('#red,#orange, #yellow, #green, #blue, #purple').mouseleave(function() {
+        $(this).fadeTo(100, .5);
+    });
+});
+</script>
 <style>
-div {
-    height:100px;
-    width:100px;
+body {
+    background-color: white;
+}
+#red,#orange, #yellow, #green, #blue, #purple {
+    height:50px;
+    width:13.5px;
     display: inline-block;
+    opacity:.4;
 }
 
 #red {
     background-color:#FF0000;
+}
+
+#orange {
+    background-color:#FF5733;
 }
 
 #blue {
@@ -32,22 +200,17 @@ div {
 #green {
     background-color:#008800;
 }
+
+#purple {
+    background-color:#7433FF;
+}
+#white {
+	height:800px;
+    width:3px;
+    display: inline-block;
+    opacity:.4;
+    background-color:black;
+}
 </style>
-<script>
-$(document).ready(function() {
-   $('div').mouseenter(function() {
-       $(this).animate({
-           height: '+=10px'
-       });
-   });
-   $('div').mouseleave(function() {
-       $(this).animate({
-           height: '-=10px'
-       }); 
-   });
-   $('div').click(function() {
-       $(this).toggle(1000);
-   }); 
-});
-</script>
+
 </html>
